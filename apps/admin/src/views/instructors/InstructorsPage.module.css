@@ -1,0 +1,197 @@
+/* InstructorsPage - Instructor Cards */
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: var(--space-lg);
+}
+
+.instructorCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: var(--space-md);
+  position: relative;
+  animation: slideUp 0.5s ease-out backwards;
+}
+
+.avatar {
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-light));
+  color: white;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.name {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--color-charcoal);
+  margin: 0;
+}
+
+.specialty {
+  font-size: 0.9375rem;
+  color: var(--color-primary);
+  font-weight: 500;
+  margin: 0;
+}
+
+.contact {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-size: 0.8125rem;
+  color: var(--color-warm-gray);
+}
+
+.stats {
+  display: flex;
+  gap: var(--space-lg);
+  padding-top: var(--space-md);
+  border-top: 1px solid var(--color-sand);
+  width: 100%;
+  justify-content: center;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+.statValue {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-charcoal);
+}
+
+.statLabel {
+  font-size: 0.75rem;
+  color: var(--color-warm-gray);
+}
+
+.status {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: var(--radius-full);
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.status.active {
+  background: rgba(107, 142, 107, 0.1);
+  color: var(--color-success);
+}
+
+.status.inactive {
+  background: rgba(194, 93, 93, 0.1);
+  color: var(--color-error);
+}
+
+/* Card Actions */
+.cardActions {
+  position: absolute;
+  top: var(--space-sm);
+  right: var(--space-sm);
+}
+
+.cardActionBtn {
+  background: transparent;
+  border: none;
+  padding: var(--space-xs);
+  cursor: pointer;
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-fast);
+  color: var(--color-warm-gray);
+}
+
+.cardActionBtn:hover {
+  background: var(--color-cream-dark);
+  color: var(--color-charcoal);
+}
+
+.cardActionBtn svg {
+  width: 20px;
+  height: 20px;
+}
+
+.cardDropdown {
+  position: absolute;
+  right: 0;
+  top: 100%;
+  background: white;
+  border: 1px solid var(--color-sand);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  min-width: 140px;
+  z-index: 100;
+  animation: fadeIn 0.15s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.cardDropdown button {
+  width: 100%;
+  padding: var(--space-sm) var(--space-md);
+  background: none;
+  border: none;
+  text-align: left;
+  font-size: 0.875rem;
+  color: var(--color-charcoal);
+  cursor: pointer;
+  transition: background var(--transition-fast);
+}
+
+.cardDropdown button:hover {
+  background: var(--color-cream);
+}
+
+.cardDropdown button:first-child {
+  border-radius: var(--radius-md) var(--radius-md) 0 0;
+}
+
+.cardDropdown button:last-child {
+  border-radius: 0 0 var(--radius-md) var(--radius-md);
+}
+
+.deleteBtn {
+  color: var(--color-error) !important;
+}
+
+.deleteBtn:hover {
+  background: rgba(194, 93, 93, 0.1) !important;
+}

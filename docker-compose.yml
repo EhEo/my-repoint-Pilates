@@ -1,0 +1,17 @@
+services:
+  postgres:
+    image: postgres:16
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: repoint
+      POSTGRES_PASSWORD: repoint
+      POSTGRES_DB: repoint
+    ports:
+      - "5433:5432"
+    volumes:
+      - repoint_postgres_data:/var/lib/postgresql/data
+
+volumes:
+  repoint_postgres_data:
+
+

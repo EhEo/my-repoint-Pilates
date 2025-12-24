@@ -1,0 +1,159 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// =========================
+// Auth / RBAC (Phase 1)
+// =========================
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  password  String
+  role      Role
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+enum Role {
+  admin
+  instructor
+  member
+}
+
+// =========================
+// Core Domain (Phase 1 MVP)
+// =========================
+model Member {
+  id        String       @id @default(cuid())
+  name      String
+  phone     String       @unique
+  email     String?
+  birthDate DateTime?
+  gender    String?
+  status    MemberStatus @default(active)
+  memo      String?
+  createdAt DateTime     @default(now())
+  updatedAt DateTime     @updatedAt
+
+  memberships  Membership[]
+  reservations Reservation[]
+}
+
+enum MemberStatus {
+  active
+  inactive
+  expired
+}
+
+model Instructor {
+  id        String   @id @default(cuid())
+  name      String
+  phone     String
+  email     String?
+  status    String   @default("active")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  classes   Class[]
+  schedules Schedule[]
+}
+
+model Class {
+  id           String     @id @default(cuid())
+  name         String
+  type         ClassType
+  instructorId String?
+  maxCapacity  Int
+  durationMin  Int
+  level        String?
+  equipment    String?
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
+
+  instructor Instructor? @relation(fields: [instructorId], references: [id])
+  schedules  Schedule[]
+}
+
+enum ClassType {
+  private
+  duet
+  group
+  large_group
+}
+
+model Schedule {
+  id           String         @id @default(cuid())
+  classId      String
+  instructorId String?
+  startTime    DateTime
+  endTime      DateTime
+  status       ScheduleStatus @default(active)
+  createdAt    DateTime       @default(now())
+  updatedAt    DateTime       @updatedAt
+
+  class        Class          @relation(fields: [classId], references: [id])
+  instructor   Instructor?    @relation(fields: [instructorId], references: [id])
+  reservations Reservation[]
+
+  @@index([startTime])
+  @@index([classId])
+}
+
+enum ScheduleStatus {
+  active
+  cancelled
+}
+
+model Reservation {
+  id          String            @id @default(cuid())
+  memberId    String
+  scheduleId  String
+  status      ReservationStatus @default(confirmed)
+  reservedAt  DateTime          @default(now())
+  cancelledAt DateTime?
+  attendedAt  DateTime?
+
+  member   Member   @relation(fields: [memberId], references: [id])
+  schedule Schedule @relation(fields: [scheduleId], references: [id])
+
+  @@unique([memberId, scheduleId])
+  @@index([scheduleId])
+}
+
+enum ReservationStatus {
+  confirmed
+  cancelled
+  attended
+  no_show
+  waiting
+}
+
+model Membership {
+  id             String         @id @default(cuid())
+  memberId       String
+  type           MembershipType
+  totalCount     Int?
+  remainingCount Int?
+  startDate      DateTime
+  endDate        DateTime?
+  status         String         @default("active")
+  createdAt      DateTime       @default(now())
+  updatedAt      DateTime       @updatedAt
+
+  member Member @relation(fields: [memberId], references: [id])
+
+  @@index([memberId])
+}
+
+enum MembershipType {
+  count
+  period
+  mixed
+}
+
+

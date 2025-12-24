@@ -1,0 +1,17 @@
+import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+import { PageHeader } from '../../ui/PageHeader';
+import { Card } from '../../ui/Card';
+import styles from '../members/MembersPage.module.css';
+const mockReservations = [
+    { id: 1, member: '김지영', cls: '매트 필라테스 A', date: '2024-12-12', time: '10:00', status: 'confirmed' },
+    { id: 2, member: '이수민', cls: '기구 필라테스 B', date: '2024-12-12', time: '11:00', status: 'confirmed' },
+    { id: 3, member: '박현우', cls: '재활 필라테스', date: '2024-12-12', time: '14:00', status: 'pending' },
+    { id: 4, member: '최민지', cls: '매트 필라테스 B', date: '2024-12-12', time: '15:00', status: 'confirmed' },
+    { id: 5, member: '정다은', cls: '기구 필라테스 A', date: '2024-12-12', time: '16:00', status: 'cancelled' },
+];
+export function ReservationsPage() {
+    return (_jsxs("div", { className: styles.container, children: [_jsx(PageHeader, { title: "\uC608\uC57D", description: "\uD68C\uC6D0 \uC608\uC57D\uC744 \uAD00\uB9AC\uD558\uACE0 \uD655\uC778\uD560 \uC218 \uC788\uC2B5\uB2C8\uB2E4", action: {
+                    label: '예약 추가',
+                    onClick: () => console.log('예약 추가'),
+                } }), _jsxs("div", { className: styles.toolbar, children: [_jsxs("div", { className: styles.searchBox, children: [_jsxs("svg", { viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: "2", children: [_jsx("circle", { cx: "11", cy: "11", r: "8" }), _jsx("line", { x1: "21", y1: "21", x2: "16.65", y2: "16.65" })] }), _jsx("input", { type: "text", placeholder: "\uD68C\uC6D0\uBA85, \uC218\uC5C5\uBA85\uC73C\uB85C \uAC80\uC0C9" })] }), _jsxs("div", { className: styles.filters, children: [_jsxs("select", { className: styles.select, children: [_jsx("option", { value: "", children: "\uC804\uCCB4 \uC0C1\uD0DC" }), _jsx("option", { value: "confirmed", children: "\uD655\uC815" }), _jsx("option", { value: "pending", children: "\uB300\uAE30" }), _jsx("option", { value: "cancelled", children: "\uCDE8\uC18C" })] }), _jsx("input", { type: "date", className: styles.select })] })] }), _jsx(Card, { children: _jsxs("table", { className: styles.table, children: [_jsx("thead", { children: _jsxs("tr", { children: [_jsx("th", { children: "\uD68C\uC6D0" }), _jsx("th", { children: "\uC218\uC5C5" }), _jsx("th", { children: "\uB0A0\uC9DC" }), _jsx("th", { children: "\uC2DC\uAC04" }), _jsx("th", { children: "\uC0C1\uD0DC" }), _jsx("th", {})] }) }), _jsx("tbody", { children: mockReservations.map((item, idx) => (_jsxs("tr", { style: { animationDelay: `${idx * 50}ms` }, children: [_jsx("td", { children: _jsxs("div", { className: styles.memberName, children: [_jsx("div", { className: styles.avatar, children: item.member.charAt(0) }), _jsx("span", { children: item.member })] }) }), _jsx("td", { children: item.cls }), _jsx("td", { className: styles.date, children: item.date }), _jsx("td", { children: item.time }), _jsx("td", { children: _jsxs("span", { className: `${styles.status} ${styles[item.status]}`, children: [item.status === 'confirmed' && '확정', item.status === 'pending' && '대기', item.status === 'cancelled' && '취소'] }) }), _jsx("td", { children: _jsx("button", { className: styles.actionBtn, children: _jsxs("svg", { viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: "2", children: [_jsx("circle", { cx: "12", cy: "12", r: "1" }), _jsx("circle", { cx: "19", cy: "12", r: "1" }), _jsx("circle", { cx: "5", cy: "12", r: "1" })] }) }) })] }, item.id))) })] }) })] }));
+}

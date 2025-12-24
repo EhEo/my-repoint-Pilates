@@ -1,0 +1,33 @@
+{
+  "name": "repoint-pilates",
+  "version": "1.0.0",
+  "description": "RePoint Pilates - 필라테스 센터를 위한 스마트한 회원 관리 및 예약 시스템",
+  "private": true,
+  "main": "index.html",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev:landing": "npx serve -l 3000",
+    "start:landing": "npx serve -l 3000",
+    "build:landing": "echo 'Static landing - no build required'",
+    "preview:landing": "npx serve -l 8080",
+    "dev:admin": "npm run dev -w @repoint/admin",
+    "build:admin": "npm run build -w @repoint/admin",
+    "dev:api": "npm run dev -w @repoint/api",
+    "build:api": "npm run build -w @repoint/api"
+  },
+  "keywords": [
+    "pilates",
+    "booking",
+    "membership",
+    "pwa",
+    "fitness"
+  ],
+  "author": "RePoint Team",
+  "license": "MIT",
+  "devDependencies": {
+    "serve": "^14.2.0"
+  }
+}

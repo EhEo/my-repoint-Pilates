@@ -1,0 +1,17 @@
+import { jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+import { PageHeader } from '../../ui/PageHeader';
+import { Card } from '../../ui/Card';
+import styles from '../members/MembersPage.module.css';
+const mockPrescriptions = [
+    { id: 1, member: '김지영', createdAt: '2024-12-10', instructor: '박강사', focus: '코어 강화', duration: '8주', status: 'active' },
+    { id: 2, member: '이수민', createdAt: '2024-12-01', instructor: '박강사', focus: '자세 교정', duration: '12주', status: 'active' },
+    { id: 3, member: '박현우', createdAt: '2024-11-15', instructor: '박강사', focus: '재활 운동', duration: '16주', status: 'active' },
+    { id: 4, member: '최민지', createdAt: '2024-10-01', instructor: '박강사', focus: '유연성 향상', duration: '8주', status: 'completed' },
+    { id: 5, member: '정다은', createdAt: '2024-09-15', instructor: '박강사', focus: '근력 강화', duration: '12주', status: 'completed' },
+];
+export function PrescriptionsPage() {
+    return (_jsxs("div", { className: styles.container, children: [_jsx(PageHeader, { title: "\uC6B4\uB3D9\uCC98\uBC29", description: "\uD68C\uC6D0\uBCC4 \uB9DE\uCDA4 \uC6B4\uB3D9 \uCC98\uBC29\uC744 \uAD00\uB9AC\uD560 \uC218 \uC788\uC2B5\uB2C8\uB2E4", action: {
+                    label: '처방 작성',
+                    onClick: () => console.log('처방 작성'),
+                } }), _jsxs("div", { className: styles.toolbar, children: [_jsxs("div", { className: styles.searchBox, children: [_jsxs("svg", { viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: "2", children: [_jsx("circle", { cx: "11", cy: "11", r: "8" }), _jsx("line", { x1: "21", y1: "21", x2: "16.65", y2: "16.65" })] }), _jsx("input", { type: "text", placeholder: "\uD68C\uC6D0\uBA85\uC73C\uB85C \uAC80\uC0C9" })] }), _jsx("div", { className: styles.filters, children: _jsxs("select", { className: styles.select, children: [_jsx("option", { value: "", children: "\uC804\uCCB4 \uC0C1\uD0DC" }), _jsx("option", { value: "active", children: "\uC9C4\uD589\uC911" }), _jsx("option", { value: "completed", children: "\uC644\uB8CC" })] }) })] }), _jsx(Card, { children: _jsxs("table", { className: styles.table, children: [_jsx("thead", { children: _jsxs("tr", { children: [_jsx("th", { children: "\uD68C\uC6D0" }), _jsx("th", { children: "\uC791\uC131\uC77C" }), _jsx("th", { children: "\uC6B4\uB3D9 \uBAA9\uD45C" }), _jsx("th", { children: "\uAE30\uAC04" }), _jsx("th", { children: "\uB2F4\uB2F9 \uAC15\uC0AC" }), _jsx("th", { children: "\uC0C1\uD0DC" }), _jsx("th", {})] }) }), _jsx("tbody", { children: mockPrescriptions.map((item, idx) => (_jsxs("tr", { style: { animationDelay: `${idx * 50}ms` }, children: [_jsx("td", { children: _jsxs("div", { className: styles.memberName, children: [_jsx("div", { className: styles.avatar, children: item.member.charAt(0) }), _jsx("span", { children: item.member })] }) }), _jsx("td", { className: styles.date, children: item.createdAt }), _jsx("td", { children: item.focus }), _jsx("td", { children: item.duration }), _jsx("td", { children: item.instructor }), _jsx("td", { children: _jsx("span", { className: `${styles.status} ${styles[item.status]}`, children: item.status === 'active' ? '진행중' : '완료' }) }), _jsx("td", { children: _jsx("button", { className: styles.actionBtn, children: _jsxs("svg", { viewBox: "0 0 24 24", fill: "none", stroke: "currentColor", strokeWidth: "2", children: [_jsx("circle", { cx: "12", cy: "12", r: "1" }), _jsx("circle", { cx: "19", cy: "12", r: "1" }), _jsx("circle", { cx: "5", cy: "12", r: "1" })] }) }) })] }, item.id))) })] }) })] }));
+}

@@ -22,7 +22,9 @@
       "Bash(node prisma/seed.js:*)",
       "Bash(taskkill:*)",
       "Bash(pkill:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)"
     ]
   }
 }

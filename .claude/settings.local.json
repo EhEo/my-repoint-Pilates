@@ -24,7 +24,18 @@
       "Bash(pkill:*)",
       "Bash(git add:*)",
       "Bash(git commit:*)",
-      "Bash(git push:*)"
+      "Bash(git push:*)",
+      "Bash(docker compose:*)",
+      "Bash(npm install:*)",
+      "Bash(npm run dev:landing:*)",
+      "Bash(Start-Process \"C:\\\\Program Files\\\\Docker\\\\Docker\\\\Docker Desktop.exe\" -ErrorAction SilentlyContinue)",
+      "Bash(Write-Host \"Docker Desktop starting...\")",
+      "Bash(docker info:*)",
+      "Bash(npm run prisma:generate:*)",
+      "Bash(npm run prisma:migrate:*)",
+      "Bash(npm run prisma:seed:*)",
+      "Bash(npm run dev:api:*)",
+      "Bash(npm run dev:admin:*)"
     ]
   }
 }

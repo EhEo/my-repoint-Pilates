@@ -35,7 +35,19 @@
       "Bash(npm run prisma:migrate:*)",
       "Bash(npm run prisma:seed:*)",
       "Bash(npm run dev:api:*)",
-      "Bash(npm run dev:admin:*)"
+      "Bash(npm run dev:admin:*)",
+      "Bash(command -v:*)",
+      "Bash(go version:*)",
+      "Bash(opencode --version:*)",
+      "Bash(npm uninstall:*)",
+      "Bash(where:*)",
+      "Bash(/c/Users/MISTOP/AppData/Roaming/npm/opencode --version)",
+      "Bash(npx oh-my-opencode install:*)",
+      "Bash(bunx oh-my-opencode:*)",
+      "Bash(docker-compose:*)",
+      "Bash(git checkout:*)",
+      "Bash(netstat:*)",
+      "Bash(find:*)"
     ]
   }
 }

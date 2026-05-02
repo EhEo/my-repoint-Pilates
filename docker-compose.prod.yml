@@ -1,0 +1,59 @@
+services:
+  # PostgreSQL 데이터베이스
+  postgres:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: repoint
+      POSTGRES_PASSWORD: repoint
+      POSTGRES_DB: repoint
+    volumes:
+      - repoint_postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U repoint -d repoint"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  # API 서버 (NestJS)
+  api:
+    build:
+      context: .
+      dockerfile: apps/api/Dockerfile
+    restart: unless-stopped
+    environment:
+      DATABASE_URL: postgresql://repoint:repoint@postgres:5432/repoint?schema=public
+      JWT_SECRET: production-secret-change-me
+      ADMIN_EMAIL: admin@repoint.local
+      ADMIN_PASSWORD: admin1234
+      PORT: 8080
+    ports:
+      - "8080:8080"
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  # Admin 대시보드 (React)
+  admin:
+    build:
+      context: .
+      dockerfile: apps/admin/Dockerfile
+      args:
+        VITE_API_URL: http://localhost:8080
+    restart: unless-stopped
+    ports:
+      - "5173:80"
+    depends_on:
+      - api
+
+  # 랜딩 페이지 (정적)
+  landing:
+    build:
+      context: .
+      dockerfile: Dockerfile.landing
+    restart: unless-stopped
+    ports:
+      - "3000:80"
+
+volumes:
+  repoint_postgres_data:

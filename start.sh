@@ -45,7 +45,7 @@ echo "║                   서비스 접속 정보                       ║"
 echo "╠══════════════════════════════════════════════════════════╣"
 echo "║                                                          ║"
 echo "║  랜딩 페이지:     http://localhost:3000                  ║"
-echo "║  Admin 대시보드:  http://localhost:5173                  ║"
+echo "║  Admin 대시보드:  http://localhost:4173                  ║"
 echo "║  API 서버:        http://localhost:8080                  ║"
 echo "║                                                          ║"
 echo "╠══════════════════════════════════════════════════════════╣"
@@ -65,12 +65,12 @@ if [ "$open_browser" = "y" ] || [ "$open_browser" = "Y" ]; then
         # macOS
         open http://localhost:3000
         sleep 2
-        open http://localhost:5173
+        open http://localhost:4173
     elif command -v xdg-open &> /dev/null; then
         # Linux
         xdg-open http://localhost:3000
         sleep 2
-        xdg-open http://localhost:5173
+        xdg-open http://localhost:4173
     fi
 fi
 

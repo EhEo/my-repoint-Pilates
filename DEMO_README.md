@@ -34,7 +34,7 @@ chmod +x start.sh stop.sh
 | 서비스 | URL | 설명 |
 |--------|-----|------|
 | **랜딩 페이지** | http://localhost:3000 | 고객용 메인 페이지 |
-| **Admin 대시보드** | http://localhost:5173 | 관리자 대시보드 |
+| **Admin 대시보드** | http://localhost:4173 | 관리자 대시보드 |
 | **API 서버** | http://localhost:8080 | REST API |
 
 ## Admin 로그인 정보
@@ -49,7 +49,7 @@ chmod +x start.sh stop.sh
 - PWA 지원 (오프라인 접속 가능)
 - 모바일 최적화
 
-### Admin 대시보드 (localhost:5173)
+### Admin 대시보드 (localhost:4173)
 - **회원 관리**: 회원 등록, 수정, 삭제
 - **강사 관리**: 강사 정보 및 스케줄 관리
 - **수업 관리**: 개인/듀엣/그룹 수업 설정
@@ -81,7 +81,7 @@ docker-compose -f docker-compose.prod.yml up -d
 ```
 
 ### 포트 충돌
-다른 프로그램이 3000, 4000, 5173 포트를 사용 중일 수 있습니다.
+다른 프로그램이 3000, 4173, 8080 포트를 사용 중일 수 있습니다.
 해당 프로그램을 종료하거나 `docker-compose.prod.yml`에서 포트를 변경하세요.
 
 ## 데이터 초기화

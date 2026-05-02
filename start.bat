@@ -49,7 +49,7 @@ echo                   Service URLs
 echo ============================================================
 echo.
 echo   Landing Page:     http://localhost:3000
-echo   Admin Dashboard:  http://localhost:5173
+echo   Admin Dashboard:  http://localhost:4173
 echo   API Server:       http://localhost:8080
 echo.
 echo ============================================================
@@ -68,7 +68,7 @@ set /p open_browser="> "
 if /i "%open_browser%"=="Y" (
     start http://localhost:3000
     timeout /t 2 /nobreak >nul
-    start http://localhost:5173
+    start http://localhost:4173
 )
 
 echo.
